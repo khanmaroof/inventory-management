@@ -4,74 +4,129 @@
       <div v-if="isOpen && backlogItem" class="modal-overlay" @click="close">
         <div class="modal-container" @click.stop>
           <div class="modal-header">
-            <h3 class="modal-title">{{ mode === 'view' ? t('purchaseOrder.viewTitle') : t('purchaseOrder.createTitle') }}</h3>
+            <h3 class="modal-title">
+              {{
+                mode === "view"
+                  ? t("purchaseOrder.viewTitle")
+                  : t("purchaseOrder.createTitle")
+              }}
+            </h3>
             <button class="close-button" @click="close">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path
+                  d="M15 5L5 15M5 5L15 15"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
               </svg>
             </button>
           </div>
 
           <div class="modal-body">
             <div class="item-header">
-              <h4 class="item-name">{{ translateProductName(backlogItem.item_name) }}</h4>
+              <h4 class="item-name">
+                {{ translateProductName(backlogItem.item_name) }}
+              </h4>
               <div class="item-sku">SKU: {{ backlogItem.item_sku }}</div>
             </div>
 
             <div class="shortage-summary">
               <div class="summary-card danger">
-                <div class="info-label">{{ t('purchaseOrder.shortage') }}</div>
-                <div class="summary-value">{{ shortage }} {{ t('purchaseOrder.units') }}</div>
+                <div class="info-label">{{ t("purchaseOrder.shortage") }}</div>
+                <div class="summary-value">
+                  {{ shortage }} {{ t("purchaseOrder.units") }}
+                </div>
               </div>
               <div class="summary-card">
-                <div class="info-label">{{ t('purchaseOrder.daysDelayed') }}</div>
-                <div class="summary-value">{{ backlogItem.days_delayed }} {{ t('purchaseOrder.days') }}</div>
+                <div class="info-label">
+                  {{ t("purchaseOrder.daysDelayed") }}
+                </div>
+                <div class="summary-value">
+                  {{ backlogItem.days_delayed }} {{ t("purchaseOrder.days") }}
+                </div>
               </div>
               <div class="summary-card">
-                <div class="info-label">{{ t('purchaseOrder.orderId') }}</div>
+                <div class="info-label">{{ t("purchaseOrder.orderId") }}</div>
                 <div class="summary-value">{{ backlogItem.order_id }}</div>
               </div>
             </div>
 
             <!-- View mode -->
             <template v-if="mode === 'view'">
-              <div v-if="loading" class="state-message">{{ t('purchaseOrder.loading') }}</div>
+              <div v-if="loading" class="state-message">
+                {{ t("purchaseOrder.loading") }}
+              </div>
               <div v-else-if="error" class="form-error">{{ error }}</div>
               <div v-else-if="purchaseOrder" class="info-grid">
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.poNumber') }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.poNumber") }}
+                  </div>
                   <div class="info-value order-id">{{ purchaseOrder.id }}</div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.status') }}</div>
+                  <div class="info-label">{{ t("purchaseOrder.status") }}</div>
                   <div class="info-value">{{ purchaseOrder.status }}</div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.supplierName') }}</div>
-                  <div class="info-value">{{ purchaseOrder.supplier_name }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.supplierName") }}
+                  </div>
+                  <div class="info-value">
+                    {{ purchaseOrder.supplier_name }}
+                  </div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.quantity') }}</div>
-                  <div class="info-value">{{ purchaseOrder.quantity }} {{ t('purchaseOrder.units') }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.quantity") }}
+                  </div>
+                  <div class="info-value">
+                    {{ purchaseOrder.quantity }} {{ t("purchaseOrder.units") }}
+                  </div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.unitCost') }}</div>
-                  <div class="info-value">{{ formatCurrencyWithDecimals(purchaseOrder.unit_cost, currentCurrency, 2) }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.unitCost") }}
+                  </div>
+                  <div class="info-value">
+                    {{
+                      formatCurrencyWithDecimals(
+                        purchaseOrder.unit_cost,
+                        currentCurrency,
+                        2,
+                      )
+                    }}
+                  </div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.totalCost') }}</div>
-                  <div class="info-value total">{{ formatCurrency(viewTotal, currentCurrency) }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.totalCost") }}
+                  </div>
+                  <div class="info-value total">
+                    {{ formatCurrency(viewTotal, currentCurrency) }}
+                  </div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.expectedDelivery') }}</div>
-                  <div class="info-value">{{ formatDate(purchaseOrder.expected_delivery_date) }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.expectedDelivery") }}
+                  </div>
+                  <div class="info-value">
+                    {{ formatDate(purchaseOrder.expected_delivery_date) }}
+                  </div>
                 </div>
                 <div class="info-item">
-                  <div class="info-label">{{ t('purchaseOrder.createdDate') }}</div>
-                  <div class="info-value">{{ formatDate(purchaseOrder.created_date) }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.createdDate") }}
+                  </div>
+                  <div class="info-value">
+                    {{ formatDate(purchaseOrder.created_date) }}
+                  </div>
                 </div>
                 <div v-if="purchaseOrder.notes" class="info-item full-width">
-                  <div class="info-label">{{ t('purchaseOrder.notesView') }}</div>
+                  <div class="info-label">
+                    {{ t("purchaseOrder.notesView") }}
+                  </div>
                   <div class="info-value">{{ purchaseOrder.notes }}</div>
                 </div>
               </div>
@@ -81,28 +136,84 @@
             <form v-else id="po-form" @submit.prevent="submit">
               <div class="form-grid">
                 <div class="form-field full">
-                  <label class="info-label" for="po-supplier">{{ t('purchaseOrder.supplierName') }}</label>
-                  <input id="po-supplier" v-model="form.supplier_name" class="form-input" :class="{ invalid: touched.supplier && !supplierValid }" type="text" @blur="touched.supplier = true" />
-                  <span v-if="touched.supplier && !supplierValid" class="field-error">{{ t('purchaseOrder.required') }}</span>
+                  <label class="info-label" for="po-supplier">{{
+                    t("purchaseOrder.supplierName")
+                  }}</label>
+                  <input
+                    id="po-supplier"
+                    v-model="form.supplier_name"
+                    class="form-input"
+                    :class="{ invalid: touched.supplier && !supplierValid }"
+                    type="text"
+                    @blur="touched.supplier = true"
+                  />
+                  <span
+                    v-if="touched.supplier && !supplierValid"
+                    class="field-error"
+                    >{{ t("purchaseOrder.required") }}</span
+                  >
                 </div>
                 <div class="form-field">
-                  <label class="info-label" for="po-quantity">{{ t('purchaseOrder.quantity') }}</label>
-                  <input id="po-quantity" v-model.number="form.quantity" class="form-input" :class="{ invalid: !quantityValid }" type="number" min="1" step="1" />
-                  <span v-if="!quantityValid" class="field-error">{{ t('purchaseOrder.minQuantity') }}</span>
+                  <label class="info-label" for="po-quantity">{{
+                    t("purchaseOrder.quantity")
+                  }}</label>
+                  <input
+                    id="po-quantity"
+                    v-model.number="form.quantity"
+                    class="form-input"
+                    :class="{ invalid: !quantityValid }"
+                    type="number"
+                    min="1"
+                    step="1"
+                  />
+                  <span v-if="!quantityValid" class="field-error">{{
+                    t("purchaseOrder.minQuantity")
+                  }}</span>
                 </div>
                 <div class="form-field">
-                  <label class="info-label" for="po-cost">{{ t('purchaseOrder.unitCost') }} (USD)</label>
-                  <input id="po-cost" v-model.number="form.unit_cost" class="form-input" :class="{ invalid: touched.cost && !costValid }" type="number" min="0" step="0.01" @blur="touched.cost = true" />
-                  <span v-if="touched.cost && !costValid" class="field-error">{{ t('purchaseOrder.minCost') }}</span>
+                  <label class="info-label" for="po-cost"
+                    >{{ t("purchaseOrder.unitCost") }} (USD)</label
+                  >
+                  <input
+                    id="po-cost"
+                    v-model.number="form.unit_cost"
+                    class="form-input"
+                    :class="{ invalid: touched.cost && !costValid }"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    @blur="touched.cost = true"
+                  />
+                  <span v-if="touched.cost && !costValid" class="field-error">{{
+                    t("purchaseOrder.minCost")
+                  }}</span>
                 </div>
                 <div class="form-field full">
-                  <label class="info-label" for="po-date">{{ t('purchaseOrder.expectedDelivery') }}</label>
-                  <input id="po-date" v-model="form.expected_delivery_date" class="form-input" :class="{ invalid: touched.date && !dateValid }" type="date" @blur="touched.date = true" />
-                  <span v-if="touched.date && !dateValid" class="field-error">{{ t('purchaseOrder.required') }}</span>
+                  <label class="info-label" for="po-date">{{
+                    t("purchaseOrder.expectedDelivery")
+                  }}</label>
+                  <input
+                    id="po-date"
+                    v-model="form.expected_delivery_date"
+                    class="form-input"
+                    :class="{ invalid: touched.date && !dateValid }"
+                    type="date"
+                    @blur="touched.date = true"
+                  />
+                  <span v-if="touched.date && !dateValid" class="field-error">{{
+                    t("purchaseOrder.required")
+                  }}</span>
                 </div>
                 <div class="form-field full">
-                  <label class="info-label" for="po-notes">{{ t('purchaseOrder.notes') }}</label>
-                  <textarea id="po-notes" v-model="form.notes" class="form-input" rows="3"></textarea>
+                  <label class="info-label" for="po-notes">{{
+                    t("purchaseOrder.notes")
+                  }}</label>
+                  <textarea
+                    id="po-notes"
+                    v-model="form.notes"
+                    class="form-input"
+                    rows="3"
+                  ></textarea>
                 </div>
               </div>
               <div v-if="error" class="form-error">{{ error }}</div>
@@ -110,9 +221,21 @@
           </div>
 
           <div class="modal-footer">
-            <button class="btn-secondary" type="button" @click="close">{{ t('common.close') }}</button>
-            <button v-if="mode !== 'view'" class="btn-primary" type="submit" form="po-form" :disabled="!formValid || submitting">
-              {{ submitting ? t('purchaseOrder.creating') : t('purchaseOrder.create') }}
+            <button class="btn-secondary" type="button" @click="close">
+              {{ t("common.close") }}
+            </button>
+            <button
+              v-if="mode !== 'view'"
+              class="btn-primary"
+              type="submit"
+              form="po-form"
+              :disabled="!formValid || submitting"
+            >
+              {{
+                submitting
+                  ? t("purchaseOrder.creating")
+                  : t("purchaseOrder.create")
+              }}
             </button>
           </div>
         </div>
@@ -122,103 +245,121 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
-import { api } from '../api'
-import { useI18n } from '../composables/useI18n'
-import { formatCurrency, formatCurrencyWithDecimals } from '../utils/currency'
+import { ref, reactive, computed, watch } from "vue";
+import { api } from "../api";
+import { useI18n } from "../composables/useI18n";
+import { formatCurrency, formatCurrencyWithDecimals } from "../utils/currency";
 
-const { t, currentCurrency, translateProductName } = useI18n()
+const { t, currentCurrency, translateProductName } = useI18n();
 
 const props = defineProps({
   isOpen: {
     type: Boolean,
-    default: false
+    default: false,
   },
   backlogItem: {
     type: Object,
-    default: null
+    default: null,
   },
   mode: {
     type: String,
-    default: 'create',
-    validator: (value) => ['create', 'view'].includes(value)
-  }
-})
+    default: "create",
+    validator: (value) => ["create", "view"].includes(value),
+  },
+});
 
-const emit = defineEmits(['close', 'po-created'])
+const emit = defineEmits(["close", "po-created"]);
 
 const form = reactive({
-  supplier_name: '',
+  supplier_name: "",
   quantity: 1,
   unit_cost: null,
-  expected_delivery_date: '',
-  notes: ''
-})
-const touched = reactive({ supplier: false, cost: false, date: false })
-const purchaseOrder = ref(null)
-const loading = ref(false)
-const submitting = ref(false)
-const error = ref(null)
+  expected_delivery_date: "",
+  notes: "",
+});
+const touched = reactive({ supplier: false, cost: false, date: false });
+const purchaseOrder = ref(null);
+const loading = ref(false);
+const submitting = ref(false);
+const error = ref(null);
 
 const shortage = computed(() => {
-  if (!props.backlogItem) return 0
-  return props.backlogItem.quantity_needed - props.backlogItem.quantity_available
-})
+  if (!props.backlogItem) return 0;
+  return (
+    props.backlogItem.quantity_needed - props.backlogItem.quantity_available
+  );
+});
 
-const supplierValid = computed(() => form.supplier_name.trim().length > 0)
-const quantityValid = computed(() => Number.isInteger(form.quantity) && form.quantity >= 1)
-const costValid = computed(() => typeof form.unit_cost === 'number' && form.unit_cost > 0)
-const dateValid = computed(() => form.expected_delivery_date !== '' && !isNaN(new Date(form.expected_delivery_date).getTime()))
-const formValid = computed(() => supplierValid.value && quantityValid.value && costValid.value && dateValid.value)
+const supplierValid = computed(() => form.supplier_name.trim().length > 0);
+const quantityValid = computed(
+  () => Number.isInteger(form.quantity) && form.quantity >= 1,
+);
+const costValid = computed(
+  () => typeof form.unit_cost === "number" && form.unit_cost > 0,
+);
+const dateValid = computed(
+  () =>
+    form.expected_delivery_date !== "" &&
+    !isNaN(new Date(form.expected_delivery_date).getTime()),
+);
+const formValid = computed(
+  () =>
+    supplierValid.value &&
+    quantityValid.value &&
+    costValid.value &&
+    dateValid.value,
+);
 
 // Total is quantity x unit cost in USD; formatCurrency converts to the active currency
 const viewTotal = computed(() => {
-  if (!purchaseOrder.value) return 0
-  return purchaseOrder.value.quantity * purchaseOrder.value.unit_cost
-})
+  if (!purchaseOrder.value) return 0;
+  return purchaseOrder.value.quantity * purchaseOrder.value.unit_cost;
+});
 
 const resetForm = () => {
-  form.supplier_name = ''
-  form.quantity = Math.max(1, shortage.value)
-  form.unit_cost = null
-  form.expected_delivery_date = ''
-  form.notes = ''
-  touched.supplier = touched.cost = touched.date = false
-  error.value = null
-}
+  form.supplier_name = "";
+  form.quantity = Math.max(1, shortage.value);
+  form.unit_cost = null;
+  form.expected_delivery_date = "";
+  form.notes = "";
+  touched.supplier = touched.cost = touched.date = false;
+  error.value = null;
+};
 
 const loadPurchaseOrder = async () => {
-  loading.value = true
-  error.value = null
-  purchaseOrder.value = null
+  loading.value = true;
+  error.value = null;
+  purchaseOrder.value = null;
   try {
-    purchaseOrder.value = await api.getPurchaseOrderByBacklogItem(props.backlogItem.id)
+    purchaseOrder.value = await api.getPurchaseOrderByBacklogItem(
+      props.backlogItem.id,
+    );
   } catch (err) {
-    error.value = err.response?.data?.detail || t('purchaseOrder.loadError')
-    console.error('Failed to load purchase order:', err)
+    error.value = err.response?.data?.detail || t("purchaseOrder.loadError");
+    console.error("Failed to load purchase order:", err);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-}
+};
 
 // (Re)initialise whenever the modal opens or switches item/mode
 watch(
   () => [props.isOpen, props.backlogItem?.id, props.mode],
   ([open]) => {
-    if (!open || !props.backlogItem) return
-    if (props.mode === 'view') {
-      loadPurchaseOrder()
+    if (!open || !props.backlogItem) return;
+    if (props.mode === "view") {
+      loadPurchaseOrder();
     } else {
-      resetForm()
+      resetForm();
     }
   },
-  { immediate: true }
-)
+  { immediate: true },
+);
 
 const submit = async () => {
-  if (!formValid.value || submitting.value) return
-  submitting.value = true
-  error.value = null
+  if (!formValid.value || submitting.value) return;
+  submitting.value = true;
+  error.value = null;
   try {
     const po = await api.createPurchaseOrder({
       backlog_item_id: props.backlogItem.id,
@@ -226,31 +367,31 @@ const submit = async () => {
       quantity: form.quantity,
       unit_cost: form.unit_cost,
       expected_delivery_date: form.expected_delivery_date,
-      notes: form.notes.trim() || null
-    })
-    emit('po-created', po)
+      notes: form.notes.trim() || null,
+    });
+    emit("po-created", po);
   } catch (err) {
-    error.value = err.response?.data?.detail || t('purchaseOrder.createError')
-    console.error('Failed to create purchase order:', err)
+    error.value = err.response?.data?.detail || t("purchaseOrder.createError");
+    console.error("Failed to create purchase order:", err);
   } finally {
-    submitting.value = false
+    submitting.value = false;
   }
-}
+};
 
 const close = () => {
-  emit('close')
-}
+  emit("close");
+};
 
 const formatDate = (dateString) => {
-  if (!dateString) return 'N/A'
-  const date = new Date(dateString)
-  if (isNaN(date.getTime())) return dateString
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
+  if (!dateString) return "N/A";
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return dateString;
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 </script>
 
 <style scoped>
@@ -308,7 +449,9 @@ const formatDate = (dateString) => {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 .close-button:hover {
@@ -377,14 +520,15 @@ const formatDate = (dateString) => {
   font-weight: var(--weight-medium);
   color: var(--color-text);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
 }
 
 .btn-secondary:hover {
   background: var(--gray-50);
   border-color: var(--color-border-strong);
 }
-
 
 .shortage-summary {
   display: grid;
