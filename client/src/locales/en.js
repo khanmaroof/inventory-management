@@ -405,4 +405,39 @@ export default {
     export: "Export",
     items: "items",
   },
+
+  // Reports
+  reports: {
+    title: "Performance Reports",
+    description: "View quarterly performance metrics and monthly trends",
+    loading: "Loading reports...",
+    loadFailed: "Failed to load reports",
+    noData: "No orders match the selected filters",
+    quarterly: {
+      title: "Quarterly Performance",
+      quarter: "Quarter",
+      totalOrders: "Total Orders",
+      totalRevenue: "Total Revenue",
+      avgOrderValue: "Avg Order Value",
+      fulfillmentRate: "Fulfillment Rate",
+    },
+    trend: {
+      title: "Monthly Revenue Trend",
+    },
+    mom: {
+      title: "Month-over-Month Analysis",
+      month: "Month",
+      orders: "Orders",
+      revenue: "Revenue",
+      change: "Change",
+      growthRate: "Growth Rate",
+      notAvailable: "N/A",
+    },
+    stats: {
+      totalRevenue: "Total Revenue (YTD)",
+      avgMonthlyRevenue: "Avg Monthly Revenue",
+      totalOrders: "Total Orders (YTD)",
+      bestQuarter: "Best Performing Quarter",
+    },
+  },
 };

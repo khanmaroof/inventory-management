@@ -465,4 +465,39 @@ export default {
     "Stellar Components Ltd": "ステラコンポーネンツ",
     "Dynamic Systems Ltd": "ダイナミックシステムズ",
   },
+
+  // レポート
+  reports: {
+    title: "パフォーマンスレポート",
+    description: "四半期ごとの実績指標と月次トレンドを表示します",
+    loading: "レポートを読み込み中...",
+    loadFailed: "レポートの読み込みに失敗しました",
+    noData: "選択したフィルターに一致する注文がありません",
+    quarterly: {
+      title: "四半期パフォーマンス",
+      quarter: "四半期",
+      totalOrders: "注文総数",
+      totalRevenue: "総売上",
+      avgOrderValue: "平均注文額",
+      fulfillmentRate: "出荷完了率",
+    },
+    trend: {
+      title: "月次売上トレンド",
+    },
+    mom: {
+      title: "前月比分析",
+      month: "月",
+      orders: "注文数",
+      revenue: "売上",
+      change: "増減",
+      growthRate: "成長率",
+      notAvailable: "該当なし",
+    },
+    stats: {
+      totalRevenue: "総売上（年初来）",
+      avgMonthlyRevenue: "月平均売上",
+      totalOrders: "注文総数（年初来）",
+      bestQuarter: "最高業績の四半期",
+    },
+  },
 };
