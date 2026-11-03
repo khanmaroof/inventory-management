@@ -311,6 +311,35 @@ export default {
     selectLanguage: 'Select Language'
   },
 
+  purchaseOrder: {
+    createTitle: 'Create Purchase Order',
+    viewTitle: 'Purchase Order Details',
+    item: 'Item',
+    orderId: 'Order ID',
+    shortage: 'Shortage',
+    daysDelayed: 'Days Delayed',
+    units: 'units',
+    days: 'days',
+    supplierName: 'Supplier Name',
+    quantity: 'Quantity',
+    unitCost: 'Unit Cost',
+    expectedDelivery: 'Expected Delivery Date',
+    notes: 'Notes (optional)',
+    notesView: 'Notes',
+    totalCost: 'Total Cost',
+    status: 'Status',
+    createdDate: 'Created',
+    poNumber: 'PO ID',
+    create: 'Create PO',
+    creating: 'Creating...',
+    loading: 'Loading purchase order...',
+    loadError: 'Failed to load purchase order',
+    createError: 'Failed to create purchase order',
+    required: 'Required',
+    minQuantity: 'Must be at least 1',
+    minCost: 'Must be greater than 0'
+  },
+
   // Common
   common: {
     loading: 'Loading...',
