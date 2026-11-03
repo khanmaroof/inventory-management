@@ -1,0 +1,23 @@
+{
+  "skill_name": "vue-component-optimizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Dashboard.vue is getting huge and it feels a bit sluggish when I flip between filters. Can you dig into it and tell me what's worth optimizing?",
+      "expected_output": "Single-file report on client/src/views/Dashboard.vue with verified, prioritized findings, concrete split/composable suggestions, honest magnitude",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I feel like we copy-paste a lot between our Vue views and components. Find the duplicated stuff and tell me what should become shared composables or components.",
+      "expected_output": "Cross-file reuse report: modal shell/CSS, formatDate/formatMoney/translateCategory helpers, loading/error fetch composable, with file:line evidence",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "audit the modal components in client/src/components for perf and reuse problems",
+      "expected_output": "Report scoped to *Modal.vue files: shared BaseModal recommendation, duplicated CSS, drifted helpers, perf items verified",
+      "files": []
+    }
+  ]
+}
